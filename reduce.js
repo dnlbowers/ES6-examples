@@ -5,7 +5,21 @@
 
 
 // Summing an array of numbers:
+const nums = [0, 1, 2, 3, 4];
 
+//single line
+// let sum = nums.reduce((acc, curr) => acc + curr, 0); 0 is the first value of the accumulator not the index
+
+// multi line to show hw it works
+let sum = nums.reduce((acc, curr) => {
+    console.log(
+        "accumulator:", acc,
+        "current value:", curr,
+        "Total:", acc + curr 
+    );
+    return acc + curr
+},0); //specifies the first value for the accumulator
+console.log(sum);
 
 const teamMembers = [
     {
