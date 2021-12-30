@@ -8,17 +8,17 @@
 const nums = [0, 1, 2, 3, 4];
 
 //single line
-// let sum = nums.reduce((acc, curr) => acc + curr, 0); 0 is the first value of the accumulator not the index
+let sum = nums.reduce((acc, curr) => acc + curr, 0); //0 is the first value of the accumulator not the index
 
 // multi line to show hw it works
-let sum = nums.reduce((acc, curr) => {
-    console.log(
-        "accumulator:", acc,
-        "current value:", curr,
-        "Total:", acc + curr 
-    );
-    return acc + curr
-},0); //specifies the first value for the accumulator
+// let sum = nums.reduce((acc, curr) => {
+//     console.log(
+//         "accumulator:", acc,
+//         "current value:", curr,
+//         "Total:", acc + curr 
+//     );
+//     return acc + curr
+// },0); //specifies the first value for the accumulator
 console.log(sum);
 
 const teamMembers = [
@@ -45,6 +45,27 @@ const teamMembers = [
   ];
   
   // Totaling a specific object property
-  
-  
+let totalExperience = teamMembers.reduce((acc, curr) => acc + curr.yrsExperience, 0)
+console.log(totalExperience)
+
+
   // Grouping by a property, and totaling it too
+  // expected result {developer: 12, designer: 4 }
+  let experienceByProfession = teamMembers.reduce((acc, curr) => {
+    let key = curr.profession;
+    if (!acc[key]) {
+      acc[key] = curr.yrsExperience;
+    } else {
+      acc[key] += curr.yrsExperience;
+    }
+    return acc;
+  }, {}); // <--- Object to be started with is an empty object
+
+console.log(experienceByProfession);
+
+// ***Challenges***
+// create object with profession (key) : names of ppl in the role
+
+
+
+// filter only developers and then reduce to only ones called ariel
