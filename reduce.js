@@ -49,23 +49,33 @@ let totalExperience = teamMembers.reduce((acc, curr) => acc + curr.yrsExperience
 console.log(totalExperience)
 
 
-  // Grouping by a property, and totaling it too
-  // expected result {developer: 12, designer: 4 }
-  let experienceByProfession = teamMembers.reduce((acc, curr) => {
-    let key = curr.profession;
-    if (!acc[key]) {
-      acc[key] = curr.yrsExperience;
-    } else {
-      acc[key] += curr.yrsExperience;
-    }
-    return acc;
-  }, {}); // <--- Object to be started with is an empty object
+// Grouping by a property, and totaling it too
+// expected result {developer: 12, designer: 4 }
+let experienceByProfession = teamMembers.reduce((acc, curr) => {
+  let key = curr.profession;
+  if (!acc[key]) {
+    acc[key] = curr.yrsExperience;
+  } else {
+    acc[key] += curr.yrsExperience;
+  }
+  return acc;
+}, {}); // <--- Object to be started with is an empty object
 
-console.log(experienceByProfession);
+// console.log(experienceByProfession);
 
 // ***Challenges***
 // create object with profession (key) : names of ppl in the role
-
+let peopleInRole = teamMembers.reduce((acc, curr) => {
+  let key = curr.profession;
+  let person = curr.name;
+  if (!acc[key]) {
+    acc[key] = person + " ";
+  } else {
+    acc[key] += person + " ";
+  }
+  return acc;
+}, {});
+console.log(peopleInRole);
 
 
 // filter only developers and then reduce to only ones called ariel
